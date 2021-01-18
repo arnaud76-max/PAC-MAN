@@ -136,9 +136,6 @@ var getRandomInt = function(min,max) {
 
 // game modes
 var GAME_PACMAN = 0;
-var GAME_MSPACMAN = 1;
-var GAME_COOKIE = 2;
-var GAME_OTTO = 3;
 
 var practiceMode = false;
 var turboMode = false;
@@ -147,7 +144,7 @@ var turboMode = false;
 var gameMode = GAME_PACMAN;
 var getGameName = (function(){
 
-    var names = ["PAC-MAN", "MS PAC-MAN", "COOKIE-MAN","CRAZY OTTO"];
+    var names = ["PAC-MAN"];
     
     return function(mode) {
         if (mode == undefined) {
@@ -250,18 +247,8 @@ var getPlayerDrawFunc = function(mode) {
     if (mode == undefined) {
         mode = gameMode;
     }
-    if (mode == GAME_OTTO) {
-        return atlas.drawOttoSprite;
-    }
-    else if (mode == GAME_PACMAN) {
+     if (mode == GAME_PACMAN) {
         return atlas.drawPacmanSprite;
-    }
-    else if (mode == GAME_MSPACMAN) {
-        return atlas.drawMsPacmanSprite;
-    }
-    else if (mode == GAME_COOKIE) {
-        //return atlas.drawCookiemanSprite;
-        return drawCookiemanSprite;
     }
 };
 
@@ -334,17 +321,9 @@ var loadGame = function(t) {
 // (manages scores and high scores for each game type)
 
 var scores = [
-    0,0, // pacman
-    0,0, // mspac
-    0,0, // cookie
-    0,0, // otto
-    0 ];
+    0,0, ];
 var highScores = [
-    10000,10000, // pacman
-    10000,10000, // mspac
-    10000,10000, // cookie
-    10000,10000, // otto
-    ];
+    10000,10000];
 
 var getScoreIndex = function() {
     if (practiceMode) {
